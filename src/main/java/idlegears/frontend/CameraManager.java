@@ -28,7 +28,7 @@ public class CameraManager {
         targetX = 0.f;
         targetY = 0.f;
         targetZ = 0.f;
-        moveSpeed = 0.05f;
+        moveSpeed = 0.02f;
         camera = new Camera3D()
                 ._position(new Vector3().x(cameraX).y(cameraY).z(cameraZ))
                 .target(new Vector3().x(targetX).y(targetY).z(targetZ))
