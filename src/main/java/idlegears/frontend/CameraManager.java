@@ -28,7 +28,7 @@ public class CameraManager {
         targetX = 0.f;
         targetY = 0.f;
         targetZ = 0.f;
-        moveSpeed = 1.f;
+        moveSpeed = 0.05f;
         camera = new Camera3D()
                 ._position(new Vector3().x(cameraX).y(cameraY).z(cameraZ))
                 .target(new Vector3().x(targetX).y(targetY).z(targetZ))
@@ -47,41 +47,45 @@ public class CameraManager {
 
     public void rotate() {
         Float circle_sixth = (float) (Math.PI / 3.);
-        angle = (angle / circle_sixth + 1) * circle_sixth;
+        angle = (angle / circle_sixth - 1) * circle_sixth;
         updateCameraPos();
     }
 
     public void zoomIn() {
-        distance *= 1.5f;
+        distance /= 1.5f;
+        if (distance < 5.f) distance = 5.f;
         camera.fovy(distance);
+        updateCameraPos();
     }
 
     public void zoomOut() {
-        distance /= 1.5f;
+        distance *= 1.5f;
         camera.fovy(distance);
+        if (distance > 40.f) distance = 40.f;
+        updateCameraPos();
     }
 
     public void moveUp() {
-        targetX -= moveSpeed * (float) cos(angle);
-        targetZ -= moveSpeed * (float) sin(angle);
+        targetX -= distance * moveSpeed * (float) cos(angle);
+        targetZ -= distance * moveSpeed * (float) sin(angle);
         updateCameraPos();
     }
 
     public void moveDown() {
-        targetX += moveSpeed * (float) cos(angle);
-        targetZ += moveSpeed * (float) sin(angle);
+        targetX += distance * moveSpeed * (float) cos(angle);
+        targetZ += distance * moveSpeed * (float) sin(angle);
         updateCameraPos();
     }
 
     public void moveLeft() {
-        targetX -= moveSpeed * (float) sin(angle);
-        targetZ += moveSpeed * (float) cos(angle);
+        targetX -= distance * moveSpeed * (float) sin(angle);
+        targetZ += distance * moveSpeed * (float) cos(angle);
         updateCameraPos();
     }
 
     public void moveRight() {
-        targetX += moveSpeed * (float) sin(angle);
-        targetZ -= moveSpeed * (float) cos(angle);
+        targetX += distance * moveSpeed * (float) sin(angle);
+        targetZ -= distance * moveSpeed * (float) cos(angle);
         updateCameraPos();
     }
 }
