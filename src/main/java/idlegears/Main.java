@@ -1,10 +1,12 @@
 package idlegears;
 
+import idlegears.backend.Game;
 import idlegears.frontend.WindowManager;
 
 public class Main {
     public static void main(String[] args) {
-        WindowManager windowManager = new WindowManager();
+        Game game = new Game();
+        WindowManager windowManager = new WindowManager(game);
         windowManager.launchWindow();
     }
 }

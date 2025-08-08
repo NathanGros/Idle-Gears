@@ -3,12 +3,13 @@ package idlegears.backend.pieces;
 import java.util.ArrayList;
 
 public class Piece {
-    private Float radius;
-    private Float posX;
-    private Float posY;
-    private Float posZ;
-    private Float rotation;
-	private ArrayList<Piece> linkedPieces;
+    protected Float radius;
+    protected Float height;
+    protected Float posX;
+    protected Float posY;
+    protected Float posZ;
+    protected Float rotation;
+	protected ArrayList<Piece> linkedPieces;
 
 	public Float getRadius() {
 		return radius;
@@ -16,6 +17,14 @@ public class Piece {
 
 	public void setRadius(Float radius) {
 		this.radius = radius;
+	}
+
+	public Float getHeight() {
+		return height;
+	}
+
+	public void setHeight(Float height) {
+		this.height = height;
 	}
 
 	public Float getPosX() {
@@ -53,6 +62,16 @@ public class Piece {
 	public ArrayList<Piece> getLinkedPieces() {
 		return linkedPieces;
 	}
+
+    public Piece() {
+        radius = 0.5f;
+        height = 0.2f;
+        posX = 0.f;
+        posY = 0.f;
+        posZ = 0.f;
+        rotation = 0.f;
+        linkedPieces = new ArrayList<Piece>();
+    }
 
     public void addPiece(Piece piece) {
         linkedPieces.add(piece);
