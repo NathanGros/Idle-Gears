@@ -73,11 +73,27 @@ public class Piece {
         linkedPieces = new ArrayList<Piece>();
     }
 
-    public void addPiece(Piece piece) {
+    public void addLinkedPiece(Piece piece) {
         linkedPieces.add(piece);
     }
 
-    public void removePiece(Piece piece) {
+    public void removeLinkedPiece(Piece piece) {
         linkedPieces.remove(piece);
+    }
+
+    public void updateRotation() {
+        if (linkedPieces.size() < 1) {
+            rotation = 0.f;
+            return;
+        }
+        Float referenceRotation = linkedPieces.get(0).getRotation();
+        for (Piece piece: linkedPieces) {
+            if (piece.getRotation() != referenceRotation) {
+                rotation = 0.f;
+                // Need Warning
+                return;
+            }
+        }
+        rotation = -1.f * referenceRotation;
     }
 }
