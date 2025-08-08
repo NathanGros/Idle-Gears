@@ -57,11 +57,17 @@ public class Board {
         Clock p1 = new Clock();
         p1.setPosY(0.2f);
         Gear p2 = new Gear();
-        p2.setPosX(1.0f);
+        p2.setPosX(1.5f);
         p2.setPosY(0.2f);
         p2.setPosZ(1.0f);
+        p2.setRadius(0.3f);
+        Crank p3 = new Crank();
+        p3.setPosX(2.0f);
+        p3.setPosY(0.2f);
+        p3.setRadius(0.4f);
         addPiece(p1);
         addPiece(p2);
+        addPiece(p3);
     }
 
     public Float computeGameSpeed() {
